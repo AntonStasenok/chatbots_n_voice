@@ -1,0 +1,80 @@
+intents:
+  - welcome
+  - goodbye
+  - transfer_sender_check
+  - transfer_money
+  - transfer_date_check
+  - transfer_amount_check
+  - payment_due_date
+  - account_open
+  - account_spending_check
+
+entities:
+  - transfer-type
+  - amount
+  - account-to
+  - account-from
+  - category
+  - merchant
+  - date-time
+
+slots:
+  transfer-type:
+    type: text
+    initial_value: "deposit"
+
+  account-to:
+    type: text
+    initial_value: "saving account"
+
+  account-from:
+    type: text
+    initial_value: "checking account"
+
+  amount:
+    type: text
+    initial_value: "100 dollars"
+
+  category:
+    type: text
+    initial_value: "withdrawal"
+
+  merchant:
+    type: text
+
+  date-time:
+    type: text
+    initial_value: "today"
+
+responses:
+  utter_welcome:
+  - "Hello. Welcome to ACME Bank."
+  - "Hello, thanks for choosing ACME Bank."
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_transfer_sender_check:
+  - text: "Your last {transfer-type} was by:"
+
+  utter_transfer_money:
+  - text: "All right. So, you're transferring {amount} from your {account-from} to a {account-to}. Is that right?"
+
+  utter_transfer_date_check:
+  - text: "Your last {transfer-type} transfer was on:"
+
+  utter_transfer_amount_check:
+  - text: "The amount of your last {transfer-type} was:"
+
+  utter_payment_due_date:
+  - text: "The due date is:"
+
+  utter_account_open:
+  - text: "To open your account you should come to one of our banks in person. Don't forget to bring your ID."
+
+  utter_account_spending_check:
+  - text: "Here are your {category} in {date-time}:"
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
